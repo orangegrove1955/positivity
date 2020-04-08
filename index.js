@@ -1,1 +1,3 @@
-document.onload = console.log("Hello World");
+const addMessage = () => {
+  console.log("adding message");
+};
