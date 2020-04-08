@@ -13,10 +13,10 @@ const hearts = () => {
     particle.setAttribute(
       "style",
       `top:${rnd(20, 80)}%; 
-          left: ${rnd(0, 95)}%;
-          width: ${size}px;
-          height: ${size}px;
-          animation-delay: ${rnd(0, 30) / 10}s;`
+        left: ${rnd(0, 95)}%;
+        width: ${size}px;
+        height: ${size}px;
+        animation-delay: ${rnd(0, 30) / 10}s;`
     );
     hearts.appendChild(particle);
   }
