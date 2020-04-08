@@ -1,16 +1,71 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
   font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 body {
   width: 100vw;
   height: 100vh;
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+}
+
+nav {
   display: flex;
-  background: blue;
+  width: 100vw;
+  padding: 1rem;
+  min-height: 7vh;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
+  background: #6c63ff;
+  background: -webkit-linear-gradient(to right, #6c63ff, #852d91);
+  background: linear-gradient(to right, #6c63ff, #852d91);
+  box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);
+}
+
+ul {
+  display: flex;
+}
+
+li {
+  list-style: none;
+  margin-right: 1rem;
+}
+
+#add-message {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 4rem;
-  color: white;
+  padding: 2rem;
 }
+
+#add-message > p {
+  font-size: 1.2rem;
+}
+
+.button {
+  margin: 2rem;
+  padding: 1.2rem 3rem;
+  border-radius: 50px;
+  color: white;
+  text-transform: uppercase;
+  background: #6c63ff;
+  background: -webkit-linear-gradient(to right, #6c63ff, #852d91);
+  background: linear-gradient(to right, #6c63ff, #852d91);
+  box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);
+}
+
+.button:hover {
+  transform: scale(1.04);
+}
+
+/* TODO: Fix for mobile (esp. iphone) screens */
