@@ -11,8 +11,24 @@ const client = new faunadb.Client({
 exports.handler = (event, context, callback) => {
   console.log("Function `random-saying` invoked");
 
-  return callback(null, {
-    statusCode: 200,
-    body: JSON.stringify(client),
-  });
+  q.Match(q.Index("randomSaying"));
+
+  return client.query(
+    q
+      .Match(q.Index("randomSaying"))
+      .then((response) => {
+        console.log("Successfully got random saying", response);
+        return callback(null, {
+          statusCode: 200,
+          body: JSON.stringify(response),
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        return callback(null, {
+          statusCode: 400,
+          body: "Something went wrong",
+        });
+      })
+  );
 };
