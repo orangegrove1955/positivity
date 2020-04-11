@@ -11,10 +11,8 @@ const client = new faunadb.Client({
 exports.handler = (event, context, callback) => {
   console.log("Function `random-saying` invoked");
 
-  q.Match(q.Index("randomSaying"));
-
   return client
-    .query(q.Match(q.Index("randomSaying")))
+    .query(q.Get(q.Ref(q.Collection("Saying"), "262464456652489226")))
     .then((response) => {
       console.log("Successfully got random saying", response);
       return callback(null, {
