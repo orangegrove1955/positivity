@@ -16,7 +16,7 @@ exports.handler = (event, context, callback) => {
     .then((response) => {
       console.log("Successfully got random saying", response.data);
 
-      console.log(response["ref"]["@ref"]);
+      console.log(response["ref"]["'@ref'"]);
 
       return callback(null, {
         statusCode: 200,
