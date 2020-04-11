@@ -22,6 +22,8 @@ const hearts = () => {
     );
     hearts.appendChild(particle);
   }
+
+  setTimeout(getMessage, 1000);
 };
 
 const rnd = (m, n) => {
@@ -39,7 +41,5 @@ const getMessage = () => {
       messageDiv.innerHTML = data.saying;
     });
 };
-
-getMessage();
 
 document.onload = hearts();
