@@ -10,8 +10,26 @@ const client = new faunadb.Client({
 exports.handler = (event, context, callback) => {
   console.log("Function `add-saying` invoked");
 
-  return callback(null, {
-    statusCode: 200,
-    body: "Hello from addSaying",
-  });
+  return client
+    .query(
+      q.Create(q.Collection("Saying"), {
+        data: {
+          saying: "This is a test saying",
+          approved: false,
+        },
+      })
+    )
+    .then((response) => {
+      callback(null, {
+        statusCode: 200,
+        body: JSON.stringify(response),
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+      callback(null, {
+        statusCode: 400,
+        body: JSON.stringify(error),
+      });
+    });
 };
