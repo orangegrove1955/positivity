@@ -28,4 +28,12 @@ const rnd = (m, n) => {
   return Math.ceil(Math.random() * (n - m + 1)) + m;
 };
 
+const getMessage = () => {
+  let message = fetch(
+    "https://positivity-today.netlify.com/.netlify/functions/randomSaying"
+  ).then((response) => {
+    console.log(response.saying);
+  });
+};
+
 document.onload = hearts();
