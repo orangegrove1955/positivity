@@ -13,25 +13,20 @@ exports.handler = (event, context, callback) => {
 
   q.Match(q.Index("randomSaying"));
 
-  return callback(null, {
-    statusCode: 200,
-    body: JSON.stringify(process.env.FAUNADB_SERVER_SECRET),
-  });
-
-  //   return client
-  //     .query(q.Match(q.Index("randomSaying")))
-  //     .then((response) => {
-  //       console.log("Successfully got random saying", response);
-  //       return callback(null, {
-  //         statusCode: 200,
-  //         body: JSON.stringify(response),
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //       return callback(null, {
-  //         statusCode: 400,
-  //         body: "Something went wrong",
-  //       });
-  //     });
+  return client
+    .query(q.Match(q.Index("randomSaying")))
+    .then((response) => {
+      console.log("Successfully got random saying", response);
+      return callback(null, {
+        statusCode: 200,
+        body: JSON.stringify(response),
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+      return callback(null, {
+        statusCode: 400,
+        body: "Something went wrong",
+      });
+    });
 };
