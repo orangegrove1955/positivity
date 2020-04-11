@@ -2,8 +2,10 @@ const addMessage = () => {
   console.log("adding message");
 };
 
+let messageDiv = document.getElementById("message");
+
 const hearts = () => {
-  let hearts = document.getElementById("message");
+  let hearts = messageDiv;
 
   let heartcount = (hearts.offsetWidth / 50) * 5;
   for (let i = 0; i <= heartcount; i++) {
@@ -29,14 +31,12 @@ const rnd = (m, n) => {
 };
 
 const getMessage = () => {
-  let message = fetch(
-    "https://positivity-today.netlify.com/.netlify/functions/randomSaying"
-  )
+  fetch("https://positivity-today.netlify.com/.netlify/functions/randomSaying")
     .then((response) => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      messageDiv.innerHTML = data.saying;
     });
 };
 
