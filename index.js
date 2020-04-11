@@ -1,4 +1,5 @@
 let messageDiv = document.getElementById("message");
+let loading = false;
 
 const hearts = () => {
   let hearts = messageDiv;
@@ -43,6 +44,12 @@ const getMessage = () => {
 };
 
 const addMessage = () => {
+  loading = true;
+  const heartSVG = document.getElementById("heartSVG");
+  const modalcontent = document.getElementById("modal-content");
+  heartSVG.style.display = "block";
+  modalcontent.style.display = "none";
+
   const messageInput = document.getElementById("message-input");
   const sayingToAdd = messageInput.value;
   fetch("https://positivity-today.netlify.com/.netlify/functions/addSaying", {
@@ -54,11 +61,19 @@ const addMessage = () => {
     })
     .then((message) => {
       console.log(message);
+      loading = false;
     })
     .catch((error) => {
       console.log(error);
     });
 };
+
+const heart = document.getElementById("heart");
+heart.addEventListener("animationiteration", function () {
+  if (loading == false) {
+    heart.classList.replace("stroke", "fill");
+  }
+});
 
 const modal = document.getElementById("modal");
 
@@ -72,7 +87,7 @@ const closeModal = () => {
 
 // Close modal when clicking outside it
 window.onclick = function (event) {
-  if (event.target == modal) {
+  if (event.target == modal && !loading) {
     closeModal();
   }
 };

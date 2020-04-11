@@ -221,3 +221,77 @@ main {
   text-decoration: none;
   cursor: pointer;
 }
+
+/* HEART LOADER */
+.heart-loader {
+  width: 30vmin;
+  height: 30vmin;
+  overflow: visible;
+}
+
+.heart-loader__group {
+  -webkit-transform-origin: 0 25px;
+  transform-origin: 0 25px;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.heart-loader__heartPath {
+  stroke: #e21737;
+  fill: transparent;
+}
+
+.stroke {
+  stroke-dasharray: 308.522, 308.522;
+  stroke-dashoffset: 308.522;
+  -webkit-animation: heart-anim 2s infinite;
+  animation: heart-anim 2s infinite;
+}
+
+.fill {
+  fill: #e21737;
+  stroke: #e21737;
+  animation: fill-anim 1s;
+}
+
+@-webkit-keyframes heart-anim {
+  0% {
+    stroke-dashoffset: 308.522;
+    fill: transparent;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+}
+@keyframes heart-anim {
+  0% {
+    stroke-dashoffset: 308.522;
+    fill: transparent;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+}
+
+@-webkit-keyframes fill-anim {
+  0% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: #e21737;
+  }
+}
+@keyframes fill-anim {
+  0% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: #e21737;
+  }
+}
