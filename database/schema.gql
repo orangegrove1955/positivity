@@ -1,0 +1,9 @@
+type Saying {
+  saying: String!
+  approved: Boolean!
+}
+
+type Query {
+  randomSaying: Saying!
+  sayingsByApprovedFlag(approved: Boolean!): [Saying!]
+}

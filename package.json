@@ -1,0 +1,25 @@
+{
+  "name": "positivity-today",
+  "version": "1.0.0",
+  "description": "A simple way to send and receive messages of positivity",
+  "main": "functions/randomSaying.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orangegrove1955/positivity.git"
+  },
+  "author": "Matthew Williams",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/orangegrove1955/positivity/issues"
+  },
+  "homepage": "https://github.com/orangegrove1955/positivity#readme",
+  "devDependencies": {
+    "netlify-lambda": "^1.6.3"
+  },
+  "dependencies": {
+    "faunadb": "^2.13.1"
+  }
+}
