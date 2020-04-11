@@ -43,7 +43,7 @@ const getMessage = () => {
 };
 
 const addMessage = () => {
-  const sayingToAdd = "Test message from the front end";
+  const sayingToAdd = prompt("enter message");
   fetch("https://positivity-today.netlify.com/.netlify/functions/addSaying", {
     method: "POST",
     body: sayingToAdd,
