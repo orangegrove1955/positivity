@@ -32,7 +32,7 @@ const getMessage = () => {
   let message = fetch(
     "https://positivity-today.netlify.com/.netlify/functions/randomSaying"
   ).then((response) => {
-    console.log(response.saying);
+    console.log(response);
   });
 };
 
