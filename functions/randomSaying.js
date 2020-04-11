@@ -4,7 +4,7 @@ const faunadb = require("faunadb");
 /* configure faunaDB Client with secret */
 const q = faunadb.query;
 const client = new faunadb.Client({
-  secret: process.env.FAUNADB_SECRET,
+  secret: process.env.FAUNADB_SERVER_SECRET,
 });
 
 /* export our lambda function as named "handler" export */
@@ -15,7 +15,7 @@ exports.handler = (event, context, callback) => {
 
   return callback(null, {
     statusCode: 200,
-    body: JSON.stringify(process.env.FAUNADB_SECRET),
+    body: JSON.stringify(process.env.FAUNADB_SERVER_SECRET),
   });
 
   //   return client
