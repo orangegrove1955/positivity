@@ -36,4 +36,6 @@ const getMessage = () => {
   });
 };
 
+getMessage();
+
 document.onload = hearts();
