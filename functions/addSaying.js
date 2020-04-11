@@ -19,7 +19,7 @@ exports.handler = (event, context, callback) => {
     .then((response) => {
       callback(null, {
         statusCode: 200,
-        body: "Successfully added your message",
+        body: JSON.stringify("Successfully added your message"),
       });
     })
     .catch((error) => {
