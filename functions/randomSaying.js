@@ -1,4 +1,5 @@
-import faunadb from "faunadb";
+// import faunadb from "faunadb";
+const faunadb = require("faunadb");
 
 /* configure faunaDB Client with secret */
 const q = faunadb.query;
