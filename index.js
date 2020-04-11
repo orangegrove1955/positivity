@@ -49,7 +49,10 @@ const addMessage = () => {
     body: sayingToAdd,
   })
     .then((response) => {
-      console.log(response);
+      return response.json();
+    })
+    .then((message) => {
+      console.log(message);
     })
     .catch((error) => {
       console.log(error);
