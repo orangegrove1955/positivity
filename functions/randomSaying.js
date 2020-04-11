@@ -20,10 +20,7 @@ exports.handler = (event, context, callback) => {
 
       return callback(null, {
         statusCode: 200,
-        body: JSON.stringify({
-          id: response["ref"],
-          saying: response.data.saying,
-        }),
+        body: JSON.stringify(response.data.saying),
       });
     })
     .catch((error) => {

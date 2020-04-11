@@ -37,8 +37,8 @@ const getMessage = () => {
     .then((response) => {
       return response.json();
     })
-    .then((data) => {
-      messageDiv.innerHTML = data.saying;
+    .then((saying) => {
+      messageDiv.innerHTML = saying;
     })
     .catch((error) => {
       messageDiv.innerHTML =
