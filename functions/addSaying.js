@@ -10,8 +10,7 @@ const client = new faunadb.Client({
 exports.handler = (event, context, callback) => {
   console.log("Function `add-saying` invoked");
   const saying = {
-    // data: { saying: JSON.parse(event.body), approved: false },
-    data: { saying: "New test value", approved: false },
+    data: { saying: JSON.parse(event.body), approved: false },
   };
   console.log(saying);
 

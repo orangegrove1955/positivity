@@ -1,7 +1,3 @@
-const addMessage = () => {
-  console.log("adding message");
-};
-
 let messageDiv = document.getElementById("message");
 
 const hearts = () => {
@@ -43,6 +39,20 @@ const getMessage = () => {
     .catch((error) => {
       messageDiv.innerHTML =
         "Uh oh, something went wrong. That's not your fault though, so just try refreshing the page!";
+    });
+};
+
+const addMessage = () => {
+  const sayingToAdd = "Test message from the front end";
+  fetch("https://positivity-today.netlify.com/.netlify/functions/addSaying", {
+    method: "POST",
+    body: sayingToAdd,
+  })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
     });
 };
 
