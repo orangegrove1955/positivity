@@ -23,7 +23,7 @@ const hearts = () => {
     hearts.appendChild(particle);
   }
 
-  setTimeout(getMessage, 1000);
+  setTimeout(getMessage, 2000);
 };
 
 const rnd = (m, n) => {
@@ -39,6 +39,10 @@ const getMessage = () => {
     })
     .then((data) => {
       messageDiv.innerHTML = data.saying;
+    })
+    .catch((error) => {
+      messageDiv.innerHTML =
+        "Uh oh, something went wrong. That's not your fault though, so just try refreshing the page!";
     });
 };
 
