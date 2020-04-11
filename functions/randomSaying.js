@@ -14,10 +14,10 @@ exports.handler = (event, context, callback) => {
   return client
     .query(q.Get(q.Ref(q.Collection("Saying"), "262464456652489226")))
     .then((response) => {
-      console.log("Successfully got random saying", response);
+      console.log("Successfully got random saying", response.data);
       return callback(null, {
         statusCode: 200,
-        body: JSON.stringify(response),
+        body: JSON.stringify(response.data.saying),
       });
     })
     .catch((error) => {
