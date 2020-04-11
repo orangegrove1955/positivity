@@ -31,10 +31,27 @@
     </main>
     <div id="add-message">
         <p>Have something positive to share?</p>
-        <div class="button" onclick="addMessage()">
+        <div class="button" onclick="openModal()">
             Add a message
         </div>
     </div>
+
+    <div id="modal">
+        <div id="modal-content">
+            <div class="modal-title">
+                <span id="close" onclick="closeModal()">&times;</span>
+                <h1>Add a message</h1>
+            </div>
+            <div class="modal-body">
+                <textarea id="message-input"
+                    placeholder="Please enter a nice, positive message to share with the world "></textarea>
+                <div>
+                    <div class="button" onclick="addMessage()">Submit</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 

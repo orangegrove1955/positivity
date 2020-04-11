@@ -38,12 +38,13 @@ const getMessage = () => {
     })
     .catch((error) => {
       messageDiv.innerHTML =
-        "Uh oh, something went wrong. That's not your fault though, so just try refreshing the page!";
+        "Uh oh, something went wrong. That's not your fault though, just try refreshing the page!";
     });
 };
 
 const addMessage = () => {
-  const sayingToAdd = prompt("enter message");
+  const messageInput = document.getElementById("message-input");
+  const sayingToAdd = messageInput.value;
   fetch("https://positivity-today.netlify.com/.netlify/functions/addSaying", {
     method: "POST",
     body: sayingToAdd,
@@ -57,6 +58,23 @@ const addMessage = () => {
     .catch((error) => {
       console.log(error);
     });
+};
+
+const modal = document.getElementById("modal");
+
+const openModal = () => {
+  modal.style.display = "flex";
+};
+
+const closeModal = () => {
+  modal.style.display = "none";
+};
+
+// Close modal when clicking outside it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    closeModal();
+  }
 };
 
 document.onload = hearts();
