@@ -17,7 +17,10 @@ exports.handler = (event, context, callback) => {
       console.log("Successfully got random saying", response.data);
       return callback(null, {
         statusCode: 200,
-        body: JSON.stringify(response.data.saying),
+        body: JSON.stringify({
+          id: response.ref["@ref"].id,
+          saying: response.data.saying,
+        }),
       });
     })
     .catch((error) => {
