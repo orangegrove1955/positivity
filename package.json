@@ -4,6 +4,7 @@
   "description": "A simple way to send and receive messages of positivity",
   "main": "functions/randomSaying.js",
   "scripts": {
+    "build": "npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
