@@ -31,9 +31,13 @@ const rnd = (m, n) => {
 const getMessage = () => {
   let message = fetch(
     "https://positivity-today.netlify.com/.netlify/functions/randomSaying"
-  ).then((response) => {
-    console.log(response.body);
-  });
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+    });
 };
 
 getMessage();
