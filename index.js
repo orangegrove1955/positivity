@@ -30,7 +30,7 @@ const rnd = (m, n) => {
 };
 
 const getMessage = () => {
-  fetch("https://positivity-today.netlify.com/.netlify/functions/randomSaying")
+  fetch("https://positivity.today/.netlify/functions/randomSaying")
     .then((response) => {
       return response.json();
     })
@@ -53,7 +53,7 @@ const addMessage = () => {
 
   const messageInput = document.getElementById("message-input");
   const sayingToAdd = messageInput.value;
-  fetch("https://positivity-today.netlify.com/.netlify/functions/addSaying", {
+  fetch("https://positivity.today/.netlify/functions/addSaying", {
     method: "POST",
     body: sayingToAdd,
   })
