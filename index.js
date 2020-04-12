@@ -47,7 +47,6 @@ const addMessage = () => {
   loading = true;
   const heartSVG = document.getElementById("heartSVG");
   const modalcontent = document.getElementById("modal-content");
-  const modal = document.getElementById("modal");
   document.getElementById("content").style.filter = "blur(8px)";
   heartSVG.style.display = "block";
   modalcontent.style.display = "none";
@@ -63,7 +62,7 @@ const addMessage = () => {
     })
     .then((message) => {
       console.log(message);
-
+      messageInput.value = "";
       loading = false;
     })
     .catch((error) => {
