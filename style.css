@@ -81,6 +81,7 @@ main {
   border-radius: 50px;
   color: white;
   text-transform: uppercase;
+  text-align: center;
   background: #6c63ff;
   background: -webkit-linear-gradient(to right, #6c63ff, #852d91);
   background: linear-gradient(to right, #6c63ff, #852d91);
