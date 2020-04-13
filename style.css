@@ -42,7 +42,7 @@ li {
 
 main {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 #image,
@@ -305,5 +305,7 @@ main {
 
 #result-message {
   color: white;
+  text-align: center;
+  max-width: 80%;
   font-size: 2rem;
 }
