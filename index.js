@@ -1,29 +1,37 @@
-let messageDiv = document.getElementById("message");
+const messageDiv = document.getElementById("message");
+const content = document.getElementById("content");
+const modal = document.getElementById("modal");
+const resultMessageRef = document.getElementById("result-message");
+const heartSVG = document.getElementById("heartSVG");
+const modalcontent = document.getElementById("modal-content");
+const messageInput = document.getElementById("message-input");
+const heart = document.getElementById("heart");
 let loading = false;
+let success = false;
+let resultMessage = "";
 
 const hearts = () => {
-  let hearts = messageDiv;
+  let heartcount = (messageDiv.offsetWidth / 50) * 5;
 
-  let heartcount = (hearts.offsetWidth / 50) * 5;
   for (let i = 0; i <= heartcount; i++) {
-    const size = rnd(60, 120) / 10;
+    const size = randomValue(60, 120) / 10;
     let particle = document.createElement("span");
     particle.setAttribute("class", "particle");
     particle.setAttribute(
       "style",
-      `top:${rnd(20, 80)}%; 
-        left: ${rnd(0, 95)}%;
+      `top:${randomValue(20, 80)}%; 
+        left: ${randomValue(0, 95)}%;
         width: ${size}px;
         height: ${size}px;
-        animation-delay: ${rnd(0, 30) / 10}s;`
+        animation-delay: ${randomValue(0, 30) / 10}s;`
     );
-    hearts.appendChild(particle);
+    messageDiv.appendChild(particle);
   }
 
   setTimeout(getMessage, 2000);
 };
 
-const rnd = (m, n) => {
+const randomValue = (m, n) => {
   m = parseInt(m);
   n = parseInt(n);
   return Math.ceil(Math.random() * (n - m + 1)) + m;
@@ -45,13 +53,10 @@ const getMessage = () => {
 
 const addMessage = () => {
   loading = true;
-  const heartSVG = document.getElementById("heartSVG");
-  const modalcontent = document.getElementById("modal-content");
-  document.getElementById("content").style.filter = "blur(8px)";
-  heartSVG.style.display = "block";
+  content.style.filter = "blur(8px)";
+  heartSVG.style.display = "flex";
   modalcontent.style.display = "none";
 
-  const messageInput = document.getElementById("message-input");
   const sayingToAdd = messageInput.value;
   fetch("https://positivity.today/.netlify/functions/addSaying", {
     method: "POST",
@@ -61,37 +66,44 @@ const addMessage = () => {
       return response.json();
     })
     .then((message) => {
-      console.log(message);
+      resultMessage = message;
       messageInput.value = "";
-      loading = false;
+      sucess = true;
     })
     .catch((error) => {
-      console.log(error);
-      heartSVG.style.display = "block";
-      modalcontent.style.display = "none";
+      resultMessage = "Something went wrong, please try again";
+      success = false;
+    })
+    .finally(() => {
+      loading = false;
+      resultMessageRef.innerText = resultMessage;
     });
 
-  //   setTimeout(stopLoading, 1200);
+  // Success
+  // resultMessage = "Successfully added your message";
+  // sucecss = true;
+
+  // Fail
+  // resultMessage = "Something went wrong, please try again";
+  // success = false;
+
+  // setTimeout(stopLoading, 1200);
 };
 
-// const stopLoading = () => {
-//   loading = false;
-// };
+const stopLoading = () => {
+  loading = false;
+};
 
-const heart = document.getElementById("heart");
 heart.addEventListener("animationiteration", function () {
-  if (loading == false) {
+  if (!loading) {
     heart.classList.replace("stroke", "fill");
-    setTimeout(closeModal, 3000);
+    resultMessageRef.style.display = "block";
+    success ? setTimeout(closeModal, 3000) : setTimeout(resetModal, 3000);
   }
 });
 
-const modal = document.getElementById("modal");
-
 const openModal = () => {
   modal.style.display = "flex";
-  const heartSVG = document.getElementById("heartSVG");
-  const modalcontent = document.getElementById("modal-content");
   heartSVG.style.display = "none";
   heart.classList.replace("fill", "stroke");
   modalcontent.style.display = "block";
@@ -99,7 +111,13 @@ const openModal = () => {
 
 const closeModal = () => {
   modal.style.display = "none";
-  document.getElementById("content").style.filter = "none";
+  resultMessageRef.style.display = "none";
+  content.style.filter = "none";
+};
+
+const resetModal = () => {
+  closeModal();
+  openModal();
 };
 
 // Close modal when clicking outside it

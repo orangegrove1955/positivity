@@ -223,6 +223,12 @@ main {
 }
 
 /* HEART LOADER */
+#heartSVG {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .heart-loader {
   width: 30vmin;
   height: 30vmin;
@@ -294,4 +300,9 @@ main {
     stroke-dashoffset: 0;
     fill: #e21737;
   }
+}
+
+#result-message {
+  color: white;
+  font-size: 2rem;
 }
