@@ -329,20 +329,28 @@ main {
   align-items: center;
 }
 
+.fa-heart {
+  color: #e21737;
+}
+
 .social {
   font-size: 1.4rem;
   margin-top: 0.5rem;
 }
 
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 651px) {
+  .about {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .hide-large {
     display: none !important;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
   .about {
     gap: 2rem;
+    grid-template-columns: 1fr;
   }
   .hide-small {
     display: none !important;
