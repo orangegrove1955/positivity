@@ -329,6 +329,11 @@ main {
   align-items: center;
 }
 
+.link {
+  text-decoration: underline;
+  color: blue;
+}
+
 .fa-heart {
   color: #e21737;
 }
