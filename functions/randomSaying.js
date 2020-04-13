@@ -21,11 +21,15 @@ exports.handler = (event, context, callback) => {
       // q.Get(q.Ref(q.Collection("Saying"), "262464456652489226")))
       .then((response) => {
         console.log("Successfully got random saying", response.data);
+        let stuff = response.data;
 
         return callback(null, {
           statusCode: 200,
           // body: JSON.stringify(response.data.saying),
-          body: JSON.stringify(response.data),
+          body: JSON.stringify({
+            data: response.data,
+            count: stuff.length,
+          }),
         });
       })
       .catch((error) => {
