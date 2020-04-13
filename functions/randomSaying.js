@@ -13,7 +13,9 @@ exports.handler = (event, context, callback) => {
   return client
     .query(
       q.Map(
-        q.Paginate(q.Match(q.Index("sayingsByApprovedFlag"), true)),
+        q.Paginate(q.Match(q.Index("sayingsByApprovedFlag"), true), {
+          size: q.Count(q.Match(q.Index("sayingsByApprovedFlag"), true)),
+        }),
         q.Lambda("sayings", q.Get(q.Var("sayings")))
       )
     )
