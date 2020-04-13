@@ -57,7 +57,7 @@ const addMessage = () => {
   heartSVG.style.display = "flex";
   modalcontent.style.display = "none";
 
-  const sayingToAdd = messageInput.value;
+  const sayingToAdd = messageInput.value.trim();
   fetch("https://positivity.today/.netlify/functions/addSaying", {
     method: "POST",
     body: sayingToAdd,
