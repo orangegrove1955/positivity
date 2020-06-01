@@ -78,16 +78,6 @@ const addMessage = () => {
       loading = false;
       resultMessageRef.innerText = resultMessage;
     });
-
-  // Success
-  // resultMessage = "Successfully added your message";
-  // sucecss = true;
-
-  // Fail
-  // resultMessage = "Something went wrong, please try again";
-  // success = false;
-
-  // setTimeout(stopLoading, 1200);
 };
 
 const stopLoading = () => {
